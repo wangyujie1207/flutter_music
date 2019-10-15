@@ -11,3 +11,24 @@ class SetRecommendPlaylistAction {
 
   SetRecommendPlaylistAction(this.recommendPlaylist);
 }
+
+// 是否显示新歌
+class ShowNewSongAction {
+  final bool showNewSong;
+
+  ShowNewSongAction(this.showNewSong);
+}
+
+//设置新碟
+class SetNewAlbumAction {
+  final List newAlbum;
+
+  SetNewAlbumAction(this.newAlbum);
+}
+
+//设置新歌
+class SetNewSongAction {
+  final List newSong;
+
+  SetNewSongAction(this.newSong);
+}

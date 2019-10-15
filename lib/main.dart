@@ -6,8 +6,13 @@ import 'package:redux/redux.dart';
 import 'home/home.dart';
 
 void main() {
-  Store store =
-      Store<AppState>(appReducer, initialState: AppState(banners: [],recommendPlaylist: []));
+  Store store = Store<AppState>(appReducer,
+      initialState: AppState(
+          banners: [],
+          recommendPlaylist: [],
+          showNewSong: false,
+          newAlbum: [],
+          newSong: []));
 
   runApp(MyApp(
     store: store,

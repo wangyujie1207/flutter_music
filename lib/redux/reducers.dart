@@ -14,3 +14,28 @@ List _setRecommendPlaylist(List recommendPlaylist, SetRecommendPlaylistAction ac
   recommendPlaylist = action.recommendPlaylist;
   return recommendPlaylist;
 }
+
+// 设置是否显示新歌
+final showNewSongReducer = combineReducers<bool>([TypedReducer<bool, ShowNewSongAction>(_showNewSong)]);
+bool _showNewSong(bool showNewSong, ShowNewSongAction action){
+  showNewSong = action.showNewSong;
+  return showNewSong;
+}
+
+// 设置新碟
+final newAlbumReducer = combineReducers<List>(
+    [TypedReducer<List, SetNewAlbumAction>(_setNewAlbum)]);
+
+List _setNewAlbum(List newAlbum, SetNewAlbumAction action) {
+  newAlbum = action.newAlbum;
+  return newAlbum;
+}
+
+//设置新歌
+final newSongReducer =
+combineReducers<List>([TypedReducer<List, SetNewSongAction>(_setNewSong)]);
+
+List _setNewSong(List newSong, SetNewSongAction action) {
+  newSong = action.newSong;
+  return newSong;
+}
