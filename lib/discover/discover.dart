@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_music/commonWidgets/CustomIcons.dart';
-import 'package:flutter_music/discover/widget/Banner.dart';
+import 'package:flutter_music/discover/widget/DiscoverBanner.dart';
 
 class Discover extends StatelessWidget {
   @override
