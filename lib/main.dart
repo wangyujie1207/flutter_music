@@ -7,7 +7,7 @@ import 'home/home.dart';
 
 void main() {
   Store store =
-      Store<AppState>(appReducer, initialState: AppState(banners: []));
+      Store<AppState>(appReducer, initialState: AppState(banners: [],recommendPlaylist: []));
 
   runApp(MyApp(
     store: store,

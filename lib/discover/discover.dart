@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_music/commonWidgets/CustomIcons.dart';
+import 'package:flutter_music/discover/widget/CategoryButton.dart';
 import 'package:flutter_music/discover/widget/DiscoverBanner.dart';
+import 'package:flutter_music/discover/widget/RecommendPlayList.dart';
 
 class Discover extends StatelessWidget {
   @override
@@ -17,7 +19,10 @@ class Discover extends StatelessWidget {
       body: CustomScrollView(
         physics: BouncingScrollPhysics(),
         slivers: <Widget>[
-          DiscoverBanner()
+          DiscoverBanner(), //轮播图
+          CategoryButton(), //分类按钮
+          RecommendPlayListHeader(), //推荐歌单头
+          RecommendPlaylistGrid(), //推荐歌单Grid
         ],
       ),
     );
