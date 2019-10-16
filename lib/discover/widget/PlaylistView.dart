@@ -41,11 +41,6 @@ class _PlaylistViewState extends State<PlaylistView>
     super.initState();
   }
   @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-  @override
   Widget build(BuildContext context) {
     super.build(context);
     return CustomScrollContainer(
@@ -92,5 +87,11 @@ class _PlaylistViewState extends State<PlaylistView>
         _isLoading = false;
       });
     });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 }

@@ -67,6 +67,7 @@ class RecommendPlaylistGrid extends StatelessWidget {
           sliver: CustomSliverGrid(
               children: recommendPlaylist
                   .map((item) => CustomPlaylistItem(
+                      id: item.id,
                       name: item.name,
                       playCount: item.playCount,
                       picUrl: item.picUrl))
