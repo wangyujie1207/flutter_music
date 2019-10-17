@@ -1,24 +1,28 @@
 import 'package:audioplayer/audioplayer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_music/redux/appState.dart';
+import 'package:flutter_music/redux/middleware.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 import 'home/home.dart';
 
 void main() {
-  Store store = Store<AppState>(appReducer,
-      initialState: AppState(
-          banners: [],
-          recommendPlaylist: [],
-          showNewSong: false,
-          newAlbum: [],
-          newSong: [],
-          playlistModel: null,
-          audioPlayer: AudioPlayer(),
-          currentIndex: null,
-          currentSong: null,
-          currentUrl: null));
+  Store store = Store<AppState>(
+    appReducer,
+    initialState: AppState(
+        banners: [],
+        recommendPlaylist: [],
+        showNewSong: false,
+        newAlbum: [],
+        newSong: [],
+        playlistModel: null,
+        audioPlayer: AudioPlayer(),
+        currentIndex: null,
+        currentSong: null,
+        currentUrl: null),
+    middleware: appMiddleware(),
+  );
 
   runApp(MyApp(
     store: store,
