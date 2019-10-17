@@ -1,5 +1,5 @@
 // 设置轮播图
-import 'package:audioplayer/audioplayer.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_music/viewModel/songItem.dart';
 
 import 'models.dart';
@@ -75,3 +75,6 @@ class SetCurrentUrlAction {
 
   SetCurrentUrlAction(this.currentUrl);
 }
+
+//播放/暂停音乐
+class PlayMusicAction {}

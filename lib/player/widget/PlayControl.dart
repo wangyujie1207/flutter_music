@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_music/commonWidgets/CustomIcons.dart';
+import 'package:flutter_music/redux/actions.dart';
+import 'package:flutter_music/redux/appState.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
 class PlayControl extends StatelessWidget {
   @override
@@ -27,7 +30,9 @@ class PlayControl extends StatelessWidget {
             icon: Icon(CustomIcons.play),
             iconSize: 60.0,
             color: Colors.white,
-            onPressed: () {},
+            onPressed: () {
+              StoreProvider.of<AppState>(context).dispatch(PlayMusicAction());
+            },
           ),
           //下一首
           IconButton(

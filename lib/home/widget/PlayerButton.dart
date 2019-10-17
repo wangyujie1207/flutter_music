@@ -7,6 +7,7 @@ class PlayerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Colors.transparent,
       child: IconButton(
         icon: Icon(CustomIcons.rank),
         onPressed: () {

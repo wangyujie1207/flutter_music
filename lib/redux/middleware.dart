@@ -1,7 +1,9 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_music/httpRequest.dart';
 import 'package:flutter_music/redux/actions.dart';
 import 'package:flutter_music/redux/appState.dart';
 import 'package:redux/redux.dart';
+import 'dart:async';
 
 import 'models.dart';
 
@@ -14,6 +16,7 @@ List<Middleware<AppState>> appMiddleware() {
         _setCurrentIndexMiddleware),
     TypedMiddleware<AppState, SetCurrentSongAction>(_setCurrentSongMiddleware),
     TypedMiddleware<AppState, SetCurrentUrlAction>(_setCurrentUrlMiddleware),
+    TypedMiddleware<AppState, PlayMusicAction>(_playMusicMiddleware),
   ];
 }
 
@@ -38,6 +41,7 @@ _setCurrentSongMiddleware(
   //获取歌曲链接
   httpRequest.get('/song/url', queryParameters: {'id': action.song.id}).then(
       (response) {
+        print(response);
     URLModel urlModel = URLModel.fromJson(response.data['data'][0]);
     store.dispatch(SetCurrentUrlAction(urlModel));
   });
@@ -47,5 +51,28 @@ _setCurrentSongMiddleware(
 // 设置当前歌曲url
 _setCurrentUrlMiddleware(
     Store store, SetCurrentUrlAction action, NextDispatcher next) {
+  next(action);
+}
+
+// 播放音乐
+_playMusicMiddleware(Store store, PlayMusicAction action, NextDispatcher next) async{
+  AppState state = store.state;
+  print(state.currentUrl.url);
+  if (state.currentUrl != null) {
+    print(state.audioPlayer.state);
+    if(state.audioPlayer.state != AudioPlayerState.PLAYING){
+      print(1111);
+      int result = await state.audioPlayer.play(state.currentUrl.url);
+      if (result == 1) {
+        // success
+        print(222);
+      }
+
+    }else{
+      state.audioPlayer.pause();
+    }
+  } else {
+    store.dispatch(SetCurrentIndexAction(state.currentIndex));
+  }
   next(action);
 }

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_music/commonWidgets/CustomIcons.dart';
+import 'package:flutter_music/redux/actions.dart';
+import 'package:flutter_music/redux/appState.dart';
+import 'package:flutter_music/redux/models.dart';
 import 'package:flutter_music/utils/handleCount.dart';
 import 'package:flutter_music/viewModel/songItem.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 
 class Playlist extends StatelessWidget {
@@ -22,7 +26,11 @@ class Playlist extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                StoreProvider.of<AppState>(context).dispatch(
+                    SetPlaylistModelAction(
+                        PlaylistModel(id: id, songList: songList)));
+              },
               child: Row(
                 children: <Widget>[
                   Padding(

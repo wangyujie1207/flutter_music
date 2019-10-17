@@ -98,6 +98,7 @@ class _PlaylistDetailState extends State<PlaylistDetail> {
                           physics: BouncingScrollPhysics(),
                           slivers: <Widget>[
                             Playlist(
+                              id: _playlistDetailModel.id,
                               songList: _playlistDetailModel.songList,
                               subscribedCount:
                                   _playlistDetailModel.subscribedCount,

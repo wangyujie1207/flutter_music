@@ -1,4 +1,4 @@
-import 'package:audioplayer/audioplayer.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_music/redux/actions.dart';
 import 'package:flutter_music/viewModel/songItem.dart';
 import 'package:redux/redux.dart';
