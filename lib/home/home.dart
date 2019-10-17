@@ -4,6 +4,7 @@ import 'package:flutter_music/account/account.dart';
 import 'package:flutter_music/commonWidgets/CustomIcons.dart';
 import 'package:flutter_music/discover/discover.dart';
 import 'package:flutter_music/friends/friends.dart';
+import 'package:flutter_music/home/widget/PlayerButton.dart';
 import 'package:flutter_music/mine/mine.dart';
 import 'package:flutter_music/video/video.dart';
 
@@ -25,17 +26,26 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(
-        activeColor: Theme.of(context).primaryColor,
-        items: _tabs
-            .map((tab) => BottomNavigationBarItem(
+    return Stack(
+      children: <Widget>[
+        CupertinoTabScaffold(
+          tabBar: CupertinoTabBar(
+            activeColor: Theme.of(context).primaryColor,
+            items: _tabs
+                .map((tab) => BottomNavigationBarItem(
                 icon: Icon(tab['icon']), title: Text(tab['text'])))
-            .toList(),
-      ),
-      tabBuilder: (BuildContext context, int index) {
-        return _pages[index];
-      },
+                .toList(),
+          ),
+          tabBuilder: (BuildContext context, int index) {
+            return _pages[index];
+          },
+        ),
+        Positioned(
+          top: 26,
+          right: 0.0,
+          child: PlayerButton(),
+        )
+      ],
     );
   }
 }

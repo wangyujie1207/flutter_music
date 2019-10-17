@@ -4,7 +4,9 @@ import 'package:flutter_music/commonWidgets/CustomSliverGrid.dart';
 import 'package:flutter_music/httpRequest.dart';
 import 'package:flutter_music/redux/actions.dart';
 import 'package:flutter_music/redux/appState.dart';
+import 'package:flutter_music/redux/models.dart';
 import 'package:flutter_music/viewModel/recommendPlaylitItem.dart';
+import 'package:flutter_music/viewModel/songItem.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
@@ -58,6 +60,20 @@ class RecommendPlaylistGrid extends StatelessWidget {
                   name: item['name'],
                   playCount: item['playCount']))
               .toList();
+          if (store.state.playlistModel == null) {
+            //获取歌单详情
+            httpRequest.get('/playlist/detail', queryParameters: {
+              'id': playlist.data['result'][0]['id']
+            }).then((detail) {
+              PlaylistModel playlistModel = PlaylistModel(
+                  id: detail.data['playlist']['id'],
+                  songList: (detail.data['playlist']['tracks'] as List)
+                      .map((song) => SongItem.fromJson(song))
+                      .toList());
+              print(playlistModel.id);
+              store.dispatch(SetPlaylistModelAction(playlistModel, true));
+            });
+          }
           store.dispatch(SetRecommendPlaylistAction(recommendPlaylist));
         });
       },

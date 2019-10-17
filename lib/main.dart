@@ -1,3 +1,4 @@
+import 'package:audioplayer/audioplayer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_music/redux/appState.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -12,7 +13,12 @@ void main() {
           recommendPlaylist: [],
           showNewSong: false,
           newAlbum: [],
-          newSong: []));
+          newSong: [],
+          playlistModel: null,
+          audioPlayer: AudioPlayer(),
+          currentIndex: null,
+          currentSong: null,
+          currentUrl: null));
 
   runApp(MyApp(
     store: store,

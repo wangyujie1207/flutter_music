@@ -7,8 +7,8 @@ class HttpRequest {
   HttpRequest([BaseOptions baseOptions]) {
     if (baseOptions == null) {
       baseOptions = BaseOptions(
-          baseUrl: 'http://192.168.0.102:3000',
-//          baseUrl: 'http://192.168.1.116:3000',
+//          baseUrl: 'http://192.168.0.102:3000',
+          baseUrl: 'http://192.168.1.116:3000',
 //          baseUrl: 'http://wangyujie.vaiwan.com',
           connectTimeout: 5000,
           receiveTimeout: 3000);
