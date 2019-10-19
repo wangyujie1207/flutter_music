@@ -62,7 +62,7 @@ _playMusicMiddleware(Store store, PlayMusicAction action, NextDispatcher next) a
     print(state.audioPlayer.state);
     if(state.audioPlayer.state != AudioPlayerState.PLAYING){
       print(1111);
-      int result = await state.audioPlayer.play(state.currentUrl.url);
+      int result = await state.audioPlayer.play("http://m10.music.126.net/20191018104542/3b7462e9e50416059a5de8b8c74f69a8/ymusic/5fae/517c/8888/3859de1813d8fcc4205c8432cc0fbb59.mp3");
       if (result == 1) {
         // success
         print(222);
